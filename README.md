@@ -25,11 +25,12 @@ Event App is a web app that lists and allows the creation of events. As a visito
 
 Event App
 
-<img width="871" alt="Captura de Pantalla 2022-11-25 a la(s) 06 27 49" src="https://user-images.githubusercontent.com/99434648/203947099-628e1ed4-9851-4380-a60e-1d832d41d684.png">
+<img width="878" alt="Captura de Pantalla 2022-12-03 a la(s) 08 47 30" src="https://user-images.githubusercontent.com/99434648/205594827-2a4ba08a-06b0-43e9-b1bf-036dc57e5370.png">
+
 
 Event details
 
-<img width="871" alt="Captura de Pantalla 2022-11-25 a la(s) 06 28 40" src="https://user-images.githubusercontent.com/99434648/203947184-12912f26-4987-4d03-8920-b8e4a2356316.png">
+<img width="878" alt="Captura de Pantalla 2022-12-03 a la(s) 08 48 17" src="https://user-images.githubusercontent.com/99434648/205594859-99c6e39a-1462-4913-8f56-d91e0ba2748d.png">
 
 
 ### Links
