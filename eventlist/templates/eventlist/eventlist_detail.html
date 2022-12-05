@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Events App{% endblock %}</title>
+    {% load static %}
+    <link href="{% static 'eventlist/css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+    {% block content %}
+
+    <div class="prueba">
+        
+        <h1><a href="{% url 'base' %}"><i class="fa-sharp fa-solid fa-circle-left " style="color:black;"></i></a> Events
+
+        </h1>
+    </div>
+
+        <div class="flex-row">
+            <div style="max-width: 60%">
+                <h1 style="font-size:64px; text-transform:uppercase;">{{event.title}} <span style="font-size:24px; font-weight: lighter;"><i class="fa-sharp fa-solid fa-location-pin"> </i> {{event.location}}</span> </h1>
+                <p >{{event.resumen|linebreaks}}</p>
+            </div>
+        
+        <div class="flex-column image-table">
+
+            <img class="image-2" src={{event.image}} alt="">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Date</th><th>Time</th><th>Price</th>
+                    </tr>
+                </thead>
+                <tr>
+                    <td>{{event.event_date|date:'j N'}}</td><td>{{event.event_date|date:'P'}}</td><td>{{event.price}}$</td>
+                </tr>
+                <tr>
+                    <td>- </td><td>- </td><td>- </td>
+                </tr>
+            </table>
+        </div>
+        </div>
+
+    {% endblock %}
+
+</body>
+{% load static %}
+<link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'eventlist/css/style.css' %}" rel="stylesheet">
+</html>

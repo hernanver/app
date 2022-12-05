@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Events App{% endblock %}</title>
+
+</head>
+<body>
+    {% block content %}
+   
+    <div class="prueba">
+        <h1 style="margin-top:1rem;">Events
+
+        </h1>
+        <p class="hovertext" style="margin-right:2rem; margin-top:1rem;" data-hover="Please use: user & pass:user1234"><a  href="{% url 'admin:eventlist_event_add' %}"> <button  class="css-button-3d--black  " >+</button></a></p>
+    </div>
+
+
+        <div class="container-mio">
+            
+            <div class="container-box">
+                {% for event in object_list %}
+                {% if event.event_date.year >= now.year %}
+                    {% if event.event_date.month >= now.month %}
+                        {% if event.event_date.day >= now.day %}
+                    
+                <div class="eventbox">
+                    
+                    <div class="topcontent">
+                        <h4 class="margin-or" style="font-size:16px;">{{ event.event_date|date:'N j, P' }} </h4>
+                        
+                       <a href="https://twitter.com/intent/tweet" style="color:black;"> <i class="fa-brands fa-twitter fa-lg" style="cursor:pointer;
+                        "></i></a>
+                    </div>
+                        <h2 style="margin-bottom: -4rem; text-transform:uppercase; font-size:26px; ">{{event.title}}</h2>
+                        
+                        <a href="{% url 'detail' event.id %}" class="linea" ><button class="css-button-3d--black">View</button></a>
+                </div>
+                {% endif %}
+                {% endif %}
+                {% endif %}
+                {% endfor %}
+
+            </div>
+
+            
+            
+            
+            <div class="highlights">
+               
+                <h1 class="title-highlights">Month's Highlights</h1>
+                {% for event in object_list %}
+          
+                {% if event.event_date.month == now.month %}
+                
+                <div class="highlightsall">
+
+                    <img class="image" src={{event.image}} alt="">
+
+                    <div class="width-or">
+                        <h4 style="text-transform:uppercase;">{{event.title}} <span style="font-style:italic ; font-weight: lighter; font-size:14px;"><i class="fa-regular fa-calendar"></i> {{ event.event_date|date:'b d,H:i' }}</span></h4>
+
+                        <div >
+                        <p>{{event.content}}</p>
+                        <p class="location"><i class="fa-sharp fa-solid fa-location-pin"> </i>{{event.location}}</p>
+                        </div>
+                    </div>
+                        
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+                    <!-- Menú de paginación -->
+                    {% if is_paginated %}
+                    <nav aria-label="Page navigation justify-content-center ">
+                        <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item ">
+                            <a class="page-link text-bg-secondary" href="?page={{ page_obj.previous_page_number }}">&laquo;</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                            <a class="page-link text-bg-secondary" href="#" tabindex="-1">&laquo;</a>
+                            </li>
+                        {% endif %}
+                        {% for i in paginator.page_range %}
+                            <li class="page-item {% if page_obj.number == i %}active{% endif %}">
+                            <a class="page-link text-bg-secondary" href="?page={{ i }}">{{ i }}</a>
+                            </li>
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item ">
+                            <a class="page-link text-bg-secondary" href="?page={{ page_obj.next_page_number }}">&raquo;</a>
+                            </li>
+                        {% else %}
+                            <li class="page-item disabled">
+                            <a class="page-link text-bg-secondary" href="#" tabindex="-1">&raquo;</a>
+                            </li>
+                        {% endif %}
+                        </ul>
+                    </nav>
+                    {% endif %}
+
+    {% endblock %}
+</body>
+{% load static %}
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<link href="{% static 'fontawesomefree/css/all.min.css' %}" rel="stylesheet" type="text/css">
+<link href="{% static 'eventlist/css/style.css' %}" rel="stylesheet">
+
+</html>
