@@ -35,7 +35,7 @@ Event details
 
 ### Links
 
-- Live Site URL: Soon..
+- Live Site URL: [Events App](https://eventsapp.pythonanywhere.com)
 
 ## My process
 
